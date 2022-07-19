@@ -1,0 +1,50 @@
+.create-sign-up-div{
+  position: absolute;
+  top: 172px;
+  left: 637px;
+  border-radius: 26px;
+  background-color: #fff;
+  border: 1px solid #e5e6ed;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  padding: 50px;
+  align-items: center;
+  justify-content: flex-start;
+  font-size: 16px;
+  color: #454c75;
+  font-family: SF Pro Display;
+}
+.frame-div327 > * + * {
+  margin-top: 26px;
+}
+
+.form-group{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+}
+
+.form-group input{
+  width: 100%;
+  height: 50px;
+  border-radius: 26px;
+  border: none;
+  box-sizing: border-box;
+  padding: 0px 10px;
+  font-size: 16px;
+  color: #454c75;
+  font-family: SF Pro Display;
+}
+
+button {
+  background-color: #db535b;
+  padding: 15px 65px;
+  border-radius: 26px;
+  width: 70%;
+  color: #fff;
+  cursor: pointer;
+  font-size: 1.2rem;
+  margin-top: 20px;
+}
