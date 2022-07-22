@@ -13,20 +13,39 @@ import "antd/dist/antd.css";
 import React, { useRef, useState } from "react";
 import ButtonJsx from "./Button";
 
-export default function DrapDrop() {
+export default function DrapDrop({open, onClose}) {
   // const inputRef = useRef([]);
   // const [fileList, setFileList] = useState([]);
   const onChange = (info) => {
     console.log("change", info);
-    // setFileList(info.fileList);
-  }
+    // console.log(info.file.originFileObj, 'hjwkbjhb');
+    const uploadhandler = new FormData();
+    uploadhandler.append("file", info.file.originFileObj);
+    fetch("https://datacreds.herokuapp.com/uploads", {
+      method: "POST",
+      mode : "cors",
+      
+
+      body: uploadhandler,
+
+    }).then((res) => {
+      console.log(res);
+    })
+
+  };
   const onDrop = (info) => {
     console.log("drop", info);
-  }
-
+  };
+  if (!open) return null;
   return (
     <>
-      <div className="drag-menu-item">
+     <div className="overlay" onClick={onClose}>
+       <div className="modal-container" onClick={
+          (e) => {
+            e.stopPropagation(); // to prevent the overlay from closing
+          }
+       }>
+       <div className="drag-menu-item">
         <div className="drag-menu-item-title">
           <h3>Import Files</h3>
           <h4>Excel (.xlsx) and CSV (.csv) files are allowed</h4>
@@ -59,13 +78,13 @@ export default function DrapDrop() {
           }}
         >
           <CloudUploadOutlined
-            style={{ fontSize: "6rem", 
-                      margin: "0 auto", 
-                      display: "block" ,
-                      fontWeight: "100",
-                      color: "grey"
-                    
-                    }}
+            style={{
+              fontSize: "6rem",
+              margin: "0 auto",
+              display: "block",
+              fontWeight: "100",
+              color: "grey",
+            }}
           />
 
           <p
@@ -131,7 +150,10 @@ export default function DrapDrop() {
             </div>
           </div>
         </div>
-      </div>
+      </div>         
+
+       </div>
+     </div>
     </>
   );
 }

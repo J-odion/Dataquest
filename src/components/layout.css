@@ -222,46 +222,6 @@
 
 }
 
-.drag-menu-item{
-  display: flex;
-  /* justify-content: center; */
-  flex-direction: column;
-  /* align-items: center; */
-  height: 80vh;
-  width: 50%;
-  margin: 0 auto;
-  border-radius: 20px;
-  background-color: rgb(231, 231, 231);
-
-    }
-
-    .drag-menu-upload{
-      display: flex;
-      justify-content: center;
-      flex-direction: column;
-      align-items: center;
-      height: 30vh;
-      width: 90%;
-      margin: 0 auto;
-      border-radius: 20px;
-      background-color: #f5f5f5;
-      /* box-shadow: 0px 10px 30px gray, inset -5px -5px 4px #dad2d3; */
-    }
-    .drag-menu-item-title{
-      font-family: 'SF Pro Display';
-      font-style: normal;
-      font-weight: 600;
-      font-size: 18px;
-      line-height: 41px;
-      color: #454C75;
-      margin: 25px;
-      text-align: center;
-
-    }
-    .drag-menu-item-title h3{
-      font-weight: bold;
-    }
-
 .card-row{
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
@@ -420,30 +380,30 @@ line-height: 24px;
 }
 
 
-
+/* 
 .table-header-design {
   display: flex;
 flex-direction: row;
 justify-content: space-between;
 align-items: flex-start;
 padding: 14px 20px;
-gap: 188px;
+gap: 188px; */
 
 /* position: absolute; */
-width: 770px;
-height: 68px;
+/* width: 770px;
+height: 68px; */
 /* left: 0px;
 top: 26px; */
 
 
 /* ash */
 
-background: #cacacc;
+/* background: #cacacc; */
 /* BG/ Border */
-
+/* 
 border: 1px solid #E5E6ED;
 border-radius: 8px;
-}
+} */
 
 .table-one{
   margin-top: 56px;
@@ -480,7 +440,7 @@ border-radius: 8px;
 
 
 
-.0-.-6-approvefile {
+.approvefile {
   height: 1080px;
   width: 1920px;
   background-color: #fafafb;

@@ -12,12 +12,16 @@ import "./ExtractData.css";
 export default function ExtractData() {
   const [files, setFiles] = useState([]);
   const [filteredFiles, setFilteredFiles] = useState([]);
+  const [openModal, setOpenModal] = useState(false)
+  // const [visible, setVisible] = useState(false);
 
-  console.log("clicked");
+  // console.log("clicked");
 
-  const upload = (e) => {
-    document.querySelector("#uploadHandle").click(); // click the hidden file input
-  };
+  // const upload = (e) => {
+  //   // document.querySelector("#uploadHandle").click(); // click the hidden file input
+  //   console.log(e);
+  //   setVisible(true);
+  // };
 
   const UploadFiles = (e) => {
     /* upload files get from the hidden file input */
@@ -152,14 +156,13 @@ export default function ExtractData() {
       </div>
 
       <div className="frame-div1674">
-        <div className="extra-body"
-        style={{
-          padding: "1rem",
-          margin: "1rem",
-          
-        }}
+        <div
+          className="extra-body"
+          style={{
+            padding: "1rem",
+            margin: "1rem",
+          }}
         >
-
           <div className="extra-middle">
             <div className="extra-data-middle-left">
               <ul>
@@ -212,15 +215,19 @@ export default function ExtractData() {
                 borderRadius: "5px",
               }}
             >
-              <thead style={{
-                display: "flex",
-                justifyContent: "space-between",
-              }}>
-                <tr style={{
+              <thead
+                style={{
                   display: "flex",
                   justifyContent: "space-between",
-                  margin:"0 30px"
-                }}>
+                }}
+              >
+                <tr
+                  style={{
+                    display: "flex",
+                    justifyContent: "space-between",
+                    margin: "0 30px",
+                  }}
+                >
                   <th>S/N</th>
                   <th></th>
                   <th>FileName</th>
@@ -238,6 +245,11 @@ export default function ExtractData() {
                     return <FileList number={index} files={file} />;
                   })}
                 </tbody> */}
+                <tbody>
+                  {files.map((file, index) => {
+                    return <FileList number={index} files={file} />;
+                  })}
+                </tbody>
             </table>
           </div>
         </div>
@@ -249,7 +261,8 @@ export default function ExtractData() {
             box-shadow="0px 6px 30px rgba(84, 111, 255, 0.16)"
             border-radius="8px"
             borderColor="#E2E2EA"
-            onClick={upload}
+            onClick={() => setOpenModal(true)}
+            className="modal-button"
 
             // onClick={upload}
           />
@@ -260,7 +273,7 @@ export default function ExtractData() {
             box-shadow="0px 6px 30px rgba(84, 111, 255, 0.16)"
             border-radius="8px"
             borderColor="#E2E2EA"
-            onClick={upload}
+            // onClick={upload}
 
             // onClick={upload}
           />
@@ -271,69 +284,93 @@ export default function ExtractData() {
             box-shadow="0px 6px 30px rgba(84, 111, 255, 0.16)"
             border-radius="8px"
             borderColor="#E2E2EA"
-            onClick={upload}
+            // onClick={upload}
 
             // onClick={upload}
           />
         </div>
       </div>
+      <DropFileInput open={openModal} onClose={() => setOpenModal(false) } 
+      onChange =  {(e) => {
+        setFiles(e.target.files);
+      }
+    }
+      
+      />
     </>
   );
+}
 
-  //   return (
-  //     <>
-  //       <div className="extra-data">
-  //         <div className="extra-header">
-  //           <p>999 pages remaining for this month</p>
-  //           <div className="extra-mail-container">
-  //             <p>icon</p>
-  //             <a href="rohit@gmail.com">rohit@gmail.com</a>
-  //           </div>
-  //         </div>
-  //         <div className="line"></div>
-  //         <div className="button-data">
-  //           <div className="button-data-left">
-  //             <ButtonJsx name="Extract Data" icon={<PlusOutlined />} />
-  //             {/* download extracted data button */}
-  //             <ButtonJsx name="Model Settings" icon={<DownloadOutlined />} />
-  //           </div>
-  //           <div className="button-data-right">
-  //             <ButtonJsx name="Extract Data" icon={<PlusOutlined />} />
-  //           </div>
-  //         </div>
-  //         <div className="extra-body">
-  //           <div className="extra-middle">
-  //             <div className="extra-data-middle-left">
-  //               <ul>
-  //                 <li>
-  //                   <a href="#">All Files</a>
-  //                 </li>
-  //                 <li>
-  //                   <a href="#">All Files</a>
-  //                 </li>
-  //                 <li>
-  //                   <a href="#">All Files</a>
-  //                 </li>
-  //               </ul>
-  //             </div>
-  //             <div className="extra-data-middle-right">
-  //               {/* search input */}
-  //               <input type="text" placeholder="Search"
-  //               onChange={filterFiles}
-  //               />
-  //               <a href="#">Filter</a>
-  //             </div>
-  //           </div>
-  //           <div
-  //             className="extra-data-table"
-  //             style={{
-  //               boxShadow: "0px 0px 5px 0px rgba(0,0,0,0.1)",
+  const FileList = (props) => {
+    const data = props.files || [];
+    return (
+      <>
+        <tr>
+          <td>{props.number + 1}</td>
+          <td>data["name"]</td>
+          <td>data["type"]</td>
+          <td>data["size"]</td>
+          <td>data["lastModified"]</td>
+        </tr>
+      </>
+
+    )
+}
+
+    {/* return ( */}
+      {/* <> */}
+        {/* <div className="extra-data"> */}
+          {/* <div className="extra-header"> */}
+            {/* <p>999 pages remaining for this month</p> */}
+            {/* <div className="extra-mail-container"> */}
+              {/* <p>icon</p> */}
+              {/* <a href="rohit@gmail.com">rohit@gmail.com</a> */}
+            {/* </div> */}
+          {/* </div> */}
+          {/* <div className="line"></div> */}
+          {/* <div className="button-data"> */}
+            {/* <div className="button-data-left"> */}
+              {/* <ButtonJsx name="Extract Data" icon={<PlusOutlined />} /> */}
+              {/* download extracted data button */}
+              {/* <ButtonJsx name="Model Settings" icon={<DownloadOutlined />} /> */}
+            {/* </div> */}
+            {/* <div className="button-data-right"> */}
+              {/* <ButtonJsx name="Extract Data" icon={<PlusOutlined />} /> */}
+            {/* </div> */}
+          {/* </div> */}
+          {/* <div className="extra-body"> */}
+            {/* <div className="extra-middle"> */}
+              {/* <div className="extra-data-middle-left"> */}
+                {/* <ul> */}
+                  {/* <li> */}
+                    {/* <a href="#">All Files</a> */}
+                  {/* </li> */}
+                  {/* <li> */}
+                    {/* <a href="#">All Files</a> */}
+                  {/* </li> */}
+                  {/* <li> */}
+                    {/* <a href="#">All Files</a> */}
+                 {/* </li> */}
+                {/* </ul> */}
+              {/* </div> */}
+              {/* <div className="extra-data-middle-right"> */}
+                {/* search input */}
+                {/* <input type="text" placeholder="Search" */}
+                {/* // onChange={filterFiles} */}
+  {/* //               /> */}
+  {/* //               <a href="#">Filter</a> */}
+  {/* //             </div> */}
+  {/* //           </div> */}
+  {/* //           <div */}
+  {/* //             className="extra-data-table" */}
+  {/* //             style={{ */}
+  {/* //               boxShadow: "0px 0px 5px 0px rgba(0,0,0,0.1)",
   //               border: "1px solid #e8e8e8",
   //               width: "1559px",
   //             }}
-  //           >
-  //             <table
-  //               // add border to table and make header gray
+  //           > */}
+  {/* //             <table */}
+  {/* //               // add border to table and make header gray
   //               style={{
   //                 borderCollapse: "collapse",
   //                 backgroundColor: "#f8f8f8",
@@ -350,8 +387,8 @@ export default function ExtractData() {
   //             >
   //               <thead>
   //                 <tr>
-  //                   <th>Name</th>
-  //                   <th>Email</th>
+  //                   <th>Name</th> */}
+  {/* //                   <th>Email</th>
   //                   <th>Phone</th>
   //                   <th>Address</th>
   //                   <th>City</th>
@@ -359,17 +396,17 @@ export default function ExtractData() {
   //                 </tr>
   //               </thead>
   //               <tbody>
-  //                 {filteredFiles.map((file, index) => {
-  //                   return <FileList number={index} files={file} />;
+  //                 {filteredFiles.map((file, index) => { */}
+  {/* //                   return <FileList number={index} files={file} />;
   //                 })}
   //               </tbody>
   //             </table>
   //           </div>
-  //         </div>
+  //         </div> */}
 
   //         {/* ant table with 6 columns */}
 
-  //         <div
+  {/* //         <div
   //           className="button-bottom"
   //           style={{
   //             margin: "20px",
@@ -404,8 +441,8 @@ export default function ExtractData() {
   //             color="#DB535B"
   //             box-shadow="0px 6px 30px rgba(84, 111, 255, 0.16)"
   //             border-radius="8px"
-  //             borderColor="#E2E2EA"
-  //           />
+  //             borderColor="#E2E2EA" */}
+  {/* //           />
   //           {/* <DropFileInput /> */}
   //           {/* <input
   //             type="file"
@@ -416,19 +453,19 @@ export default function ExtractData() {
   //             // onChange={UploadFiles}
   //             onChange=
   //           /> */}
-  //         </div>
+  {/* //         </div>
   //       </div>
   //     </>
   //   );
-  // }
+  // } */}
 
-  // const FileList = (props) => {
-  //   const files = props.files || [];
-  //   console.log('log', props);
+  {/* // const FileList = (props) => { */}
+  {/* //   const files = props.files || [];
+    // console.log('log', props); */} 
 
   //   // const covertLastModifiedToDate =
 
-  //   return (
+  {/* //   return (
   //     <>
   //       <tr>
   //         <td>{props.number + 1}</td>
@@ -437,5 +474,5 @@ export default function ExtractData() {
   //         <td>{files["type"]}</td>
   //       </tr>
   //     </>
-  //   );
-}
+  //   ); */}
+

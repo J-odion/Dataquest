@@ -38,6 +38,12 @@
   font-family: SF Pro Display;
 }
 
+
+.form-group input:focus{
+  outline: none;
+}
+
+
 button {
   background-color: #db535b;
   padding: 15px 65px;
