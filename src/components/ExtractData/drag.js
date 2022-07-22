@@ -23,7 +23,7 @@ export default function DrapDrop({open, onClose}) {
     uploadhandler.append("file", info.file.originFileObj);
     fetch("https://datacreds.herokuapp.com/uploads", {
       method: "POST",
-      mode : "cors",
+      mode : "no-cors",
       
 
       body: uploadhandler,

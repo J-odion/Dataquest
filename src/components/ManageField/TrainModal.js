@@ -27,7 +27,9 @@ function TrainModal({open, onClose}) {
         <div className="frame-div464">
           <div className="frame-div465">
             <div className="frame-div466">
-              <a style={{textDecoration:"none", color:"#000"}} className="back-div">Not Now</a>
+              <a style={{textDecoration:"none", color:"#000"}}
+              onClick={onClose}
+              className="back-div">Not Now</a>
             </div>
             <div className="frame-div467">
               <a style={{textDecoration:"none", color:"#000"}} className="back-div">Yes, Train Model</a>
